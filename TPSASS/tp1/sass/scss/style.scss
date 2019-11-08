@@ -1,0 +1,169 @@
+// Question 1
+$elements: 4;
+@for $i from 1 through $elements {
+    .taille-#{$i} {
+        width: (100% / $elements) * $i;
+    }
+}
+
+// Question 2
+@mixin generer_classes_taille() {
+    $elements: 4;
+    @for $i from 1 through $elements {
+        .taille-#{$i} {
+            width: (100% / $elements) * $i;
+        }
+    }
+}
+@include generer_classes_taille();
+
+// Question 3
+$elements: "petit", "standard", "moyen", "grand";
+$i: 0;
+
+@each $tableau_taille in $elements {
+    .taille-#{$tableau_taille} {
+        $i: $i + 1;
+        width: (100% / length($elements)) * 5;
+    }
+}
+
+
+// Question 4
+@mixin generer_tableau_taille() {
+    $elements: "petit", "standard", "moyen", "grand";
+    $i: 0;
+    @each $tableau_taille in $elements {
+        .taille-#{$tableau_taille} {
+            $i: $i + 1;
+            width: (100% / length($elements)) * $i;
+        }
+    }
+}
+@include generer_tableau_taille();
+
+
+// Question 5
+@mixin tableau_tailles($classe, $liste) {
+    $i: 0;
+    @each $tableau_taille in $liste {
+        .#{$classe}-#{$tableau_taille} {
+            $i: $i + 1;
+            width: (100% / length($liste)) * $i;
+        }
+    }
+}
+
+$tableau_tailles: "petit", "standard", "moyen", "grand";
+@include tableau_tailles("bouton", $tableau_tailles);
+
+// Question 6 & 7
+@function returnFirstInArray($array){
+    @return nth($array, 1);
+}
+
+/*
+@function returnLastInArray($array){
+    @return nth($array, length($array);
+}
+*/
+
+@function returnLastInArray($array){
+    @return nth($array, -1);
+}
+
+p::before{
+    content: returnFirstInArray($tableau_tailles);
+}
+
+// Question 8-9
+
+$destination: (
+    'espagne': 'Espagne',
+    'maroc': 'Maroc',
+    'bresil': 'Brésil',
+    'caraibes': 'Les iles caraibes',
+    );
+
+@each $label, $content in $destination {
+    .ville-#{$label}::before {
+        display: block;
+        content: '#{$content}';
+    }
+}
+
+// Question 10
+@mixin destination($placement) {
+    $i: 0;
+    @each $label, $content in $destination {
+        .ville-#{$label}::#{$placement} {
+            display: block;
+            content: '#{$content}';
+        }
+    }
+}
+@include destination("after");
+
+// Question 11
+$socials: (
+    'facebook': (
+        #96abd6,
+        #3b5998,
+    ),
+    'twitter': (
+        #75b3ff,
+        #0063db,
+    ),
+    'linkedin': (
+        #50c6ff,
+        #007bb6,
+    ),
+    'instagram': (
+        #cbb2f6,
+        #6e29e6,
+    ),
+    'pinterest': (
+        #e6f2cb,
+        #aad450,
+    ),
+    'youtube': (
+        #ff5555,
+        #bb0000,
+    ),
+);
+
+// Question 12
+@mixin social($socials, $prefix){
+    @each $label, $social in $socials {
+        .#{$prefix}-#{$label}{
+            background: #{nth($social,1)};
+            color: #{nth($social,2)};
+        }
+    }
+}
+@include social($socials, 'social');
+
+// Question 13
+body {
+    display: flex;
+}
+
+@mixin socialBackground($socials, $prefix, $background: 0.5){
+    @each $label, $social in $socials {
+        .#{$prefix}-#{$label}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            width: 20%;
+            height: 100px;
+            text-decoration: none;
+            background: #{nth($social,1)};
+            & a{
+                color: #{nth($social,2)};
+            }
+        }
+    }
+}
+@include socialBackground($socials, 'social');
+

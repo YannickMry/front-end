@@ -1,0 +1,201 @@
+@charset "UTF-8";
+.taille-1 {
+  width: 25%; }
+
+.taille-2 {
+  width: 50%; }
+
+.taille-3 {
+  width: 75%; }
+
+.taille-4 {
+  width: 100%; }
+
+.taille-1 {
+  width: 25%; }
+
+.taille-2 {
+  width: 50%; }
+
+.taille-3 {
+  width: 75%; }
+
+.taille-4 {
+  width: 100%; }
+
+.taille-petit {
+  width: 125%; }
+
+.taille-standard {
+  width: 125%; }
+
+.taille-moyen {
+  width: 125%; }
+
+.taille-grand {
+  width: 125%; }
+
+.taille-petit {
+  width: 25%; }
+
+.taille-standard {
+  width: 50%; }
+
+.taille-moyen {
+  width: 75%; }
+
+.taille-grand {
+  width: 100%; }
+
+.bouton-petit {
+  width: 25%; }
+
+.bouton-standard {
+  width: 50%; }
+
+.bouton-moyen {
+  width: 75%; }
+
+.bouton-grand {
+  width: 100%; }
+
+/*
+@function returnLastInArray($array){
+    @return nth($array, length($array);
+}
+*/
+p::before {
+  content: "petit"; }
+
+.ville-espagne::before {
+  display: block;
+  content: "Espagne"; }
+
+.ville-maroc::before {
+  display: block;
+  content: "Maroc"; }
+
+.ville-bresil::before {
+  display: block;
+  content: "Brésil"; }
+
+.ville-caraibes::before {
+  display: block;
+  content: "Les iles caraibes"; }
+
+.ville-espagne::after {
+  display: block;
+  content: "Espagne"; }
+
+.ville-maroc::after {
+  display: block;
+  content: "Maroc"; }
+
+.ville-bresil::after {
+  display: block;
+  content: "Brésil"; }
+
+.ville-caraibes::after {
+  display: block;
+  content: "Les iles caraibes"; }
+
+.social-facebook {
+  background: #96abd6;
+  color: #3b5998; }
+
+.social-twitter {
+  background: #75b3ff;
+  color: #0063db; }
+
+.social-linkedin {
+  background: #50c6ff;
+  color: #007bb6; }
+
+.social-instagram {
+  background: #cbb2f6;
+  color: #6e29e6; }
+
+.social-pinterest {
+  background: #e6f2cb;
+  color: #aad450; }
+
+.social-youtube {
+  background: #ff5555;
+  color: #bb0000; }
+
+body {
+  display: flex; }
+
+.social-facebook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #96abd6; }
+  .social-facebook a {
+    color: #3b5998; }
+
+.social-twitter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #75b3ff; }
+  .social-twitter a {
+    color: #0063db; }
+
+.social-linkedin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #50c6ff; }
+  .social-linkedin a {
+    color: #007bb6; }
+
+.social-instagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #cbb2f6; }
+  .social-instagram a {
+    color: #6e29e6; }
+
+.social-pinterest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #e6f2cb; }
+  .social-pinterest a {
+    color: #aad450; }
+
+.social-youtube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  width: 20%;
+  height: 100px;
+  text-decoration: none;
+  background: #ff5555; }
+  .social-youtube a {
+    color: #bb0000; }
+
+/*# sourceMappingURL=style.css.map */
