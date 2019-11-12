@@ -1,201 +1,108 @@
-@charset "UTF-8";
-.taille-1 {
-  width: 25%; }
-
-.taille-2 {
-  width: 50%; }
-
-.taille-3 {
-  width: 75%; }
-
-.taille-4 {
-  width: 100%; }
-
-.taille-1 {
-  width: 25%; }
-
-.taille-2 {
-  width: 50%; }
-
-.taille-3 {
-  width: 75%; }
-
-.taille-4 {
-  width: 100%; }
-
-.taille-petit {
-  width: 125%; }
-
-.taille-standard {
-  width: 125%; }
-
-.taille-moyen {
-  width: 125%; }
-
-.taille-grand {
-  width: 125%; }
-
-.taille-petit {
-  width: 25%; }
-
-.taille-standard {
-  width: 50%; }
-
-.taille-moyen {
-  width: 75%; }
-
-.taille-grand {
-  width: 100%; }
-
-.bouton-petit {
-  width: 25%; }
-
-.bouton-standard {
-  width: 50%; }
-
-.bouton-moyen {
-  width: 75%; }
-
-.bouton-grand {
-  width: 100%; }
-
 /*
-@function returnLastInArray($array){
-    @return nth($array, length($array);
-}
+Error: $color: "#96abd6" is not a color for `lighten'
+        on line 161 of scss/style.scss, in `socialBackground'
+        from line 169 of scss/style.scss
+
+156:             align-items: center;
+157:             font-size: 40px;
+158:             width: 20%;
+159:             height: 100px;
+160:             text-decoration: none;
+161:             background: #{lighten(#{nth($social,1)}, $background)};
+162:             & a{
+163:                 color: #{nth($social,2)};
+164:             }
+165:         }
+166:     }
+
+Backtrace:
+scss/style.scss:161:in `socialBackground'
+scss/style.scss:169
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:311:in `reformat_argument_error'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:158:in `rescue in _perform'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/funcall.rb:127:in `_perform'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/interpolation.rb:167:in `_perform'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:240:in `block (3 levels) in visit_each'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:240:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:240:in `block (2 levels) in visit_each'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:232:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:232:in `block in visit_each'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:231:in `visit_each'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:363:in `block (4 levels) in visit_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:363:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:363:in `block (3 levels) in visit_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:363:in `block (2 levels) in visit_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:84:in `perform_arguments'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:358:in `block in visit_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:98:in `block in with_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:98:in `with_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
+/var/lib/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:320:in `block in watch'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
+/var/lib/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
 */
-p::before {
-  content: "petit"; }
-
-.ville-espagne::before {
-  display: block;
-  content: "Espagne"; }
-
-.ville-maroc::before {
-  display: block;
-  content: "Maroc"; }
-
-.ville-bresil::before {
-  display: block;
-  content: "Brésil"; }
-
-.ville-caraibes::before {
-  display: block;
-  content: "Les iles caraibes"; }
-
-.ville-espagne::after {
-  display: block;
-  content: "Espagne"; }
-
-.ville-maroc::after {
-  display: block;
-  content: "Maroc"; }
-
-.ville-bresil::after {
-  display: block;
-  content: "Brésil"; }
-
-.ville-caraibes::after {
-  display: block;
-  content: "Les iles caraibes"; }
-
-.social-facebook {
-  background: #96abd6;
-  color: #3b5998; }
-
-.social-twitter {
-  background: #75b3ff;
-  color: #0063db; }
-
-.social-linkedin {
-  background: #50c6ff;
-  color: #007bb6; }
-
-.social-instagram {
-  background: #cbb2f6;
-  color: #6e29e6; }
-
-.social-pinterest {
-  background: #e6f2cb;
-  color: #aad450; }
-
-.social-youtube {
-  background: #ff5555;
-  color: #bb0000; }
-
-body {
-  display: flex; }
-
-.social-facebook {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #96abd6; }
-  .social-facebook a {
-    color: #3b5998; }
-
-.social-twitter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #75b3ff; }
-  .social-twitter a {
-    color: #0063db; }
-
-.social-linkedin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #50c6ff; }
-  .social-linkedin a {
-    color: #007bb6; }
-
-.social-instagram {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #cbb2f6; }
-  .social-instagram a {
-    color: #6e29e6; }
-
-.social-pinterest {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #e6f2cb; }
-  .social-pinterest a {
-    color: #aad450; }
-
-.social-youtube {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  width: 20%;
-  height: 100px;
-  text-decoration: none;
-  background: #ff5555; }
-  .social-youtube a {
-    color: #bb0000; }
-
-/*# sourceMappingURL=style.css.map */
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: $color: \"#96abd6\" is not a color for `lighten'\A         on line 161 of scss/style.scss, in `socialBackground'\A         from line 169 of scss/style.scss\A \A 156:             align-items: center;\A 157:             font-size: 40px;\A 158:             width: 20%;\A 159:             height: 100px;\A 160:             text-decoration: none;\A 161:             background: #{lighten(#{nth($social,1)}, $background)};\A 162:             & a{\A 163:                 color: #{nth($social,2)};\A 164:             }\A 165:         }\A 166:     }"; }

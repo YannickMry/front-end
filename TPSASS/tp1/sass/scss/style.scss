@@ -148,7 +148,7 @@ body {
     display: flex;
 }
 
-@mixin socialBackground($socials, $prefix, $background: 0.5){
+@mixin socialBackground($socials, $prefix, $type, $background){
     @each $label, $social in $socials {
         .#{$prefix}-#{$label}{
             display: flex;
@@ -158,12 +158,13 @@ body {
             width: 20%;
             height: 100px;
             text-decoration: none;
-            background: #{nth($social,1)};
+            background: #{lighten(#{nth($social,1)}, $background)};
             & a{
                 color: #{nth($social,2)};
             }
         }
     }
 }
-@include socialBackground($socials, 'social');
+// 'darken' , 'lighten'
+@include socialBackground($socials, 'social', 'lighten', 60);
 
