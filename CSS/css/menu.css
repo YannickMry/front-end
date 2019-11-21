@@ -56,3 +56,11 @@
     justify-content: normal;
     padding-left: 20px;
 }
+
+main {
+    margin-top: 100px;
+}
+
+section ul, section ol{
+    margin-left: 30px;
+}
