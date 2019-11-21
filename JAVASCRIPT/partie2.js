@@ -8,7 +8,7 @@ document.getElementById('partie2').setAttribute('style', 'display: none');
 btnDisabled();
 
 
-// BTN Choisir destination
+// Event Choisir destination
 document.getElementById('choisirDest').addEventListener('click', function(){
     if(document.getElementById('partie2').style.display == 'none'){
         document.getElementById('partie2').setAttribute('style', 'display: block');
@@ -21,17 +21,41 @@ document.getElementById('choisirDest').addEventListener('click', function(){
 document.querySelector('#partie2 button').addEventListener('click', function(event){
     event.preventDefault();
 
+    // DEBUT NOUVELLE LISTE
+    if(document.querySelector('#partie2 #content') != null){
+        document.querySelector('#partie2 #content').remove();
+    }
+
+    var newDiv = document.createElement('div');
+    newDiv.setAttribute('id', 'content');
+
     var userCity = document.querySelector('#partie2 input').value;
 
-    console.log(getCountry(userCity));
+    var countryObject = getCountryObj(userCity);
+    var country = countryObject[0];
+    var cities = countryObject[1];
 
-    var cities = getCities(userCity);
+    var html = '<h3>Bienvenu en '+ country +'</h3>'+
+            '<p>Vous pouvez aussi visiter :</p>';
+    newDiv.innerHTML = html;
+
+    var newUl = document.createElement('ul');
     cities.forEach(city => {
-        var newLi = document.createElement('li');
+        if(userCity != city){
+            var newLi = document.createElement('li');
             newLi.innerHTML = city;
-            document.getElementById('listeVille').appendChild(newLi);
+            newUl.appendChild(newLi);
+        }
     })
+    newDiv.appendChild(newUl);
+    document.querySelector('#partie2 form').append(newDiv);
 
+    // DEBUT AJOUT NOUVELLE DESTINATION
+    var ajoutDest = document.createElement('button');
+    ajoutDest.setAttribute('id', 'ajoutDest');
+    ajoutDest.textContent = 'Ajouter une destination';
+    document.querySelector('#btn').appendChild(ajoutDest);
+    document.querySelector('#choisirDest').remove();
 });
 
 // Event qui disable le btn si la ville est pas bonne
@@ -39,10 +63,13 @@ document.querySelector('#partie2 input').addEventListener('keyup', function(){
     btnDisabled();
 })
 
+// Event btn Ajouter destination
+document.querySelector('#ajoutDest').addEventListener("click", '#btn', function(event){
+    event.preventDefault();
 
-function addList(element){
-    document.querySelector('#partie2 ul').appendChild(element);
-}
+    var ul = document.querySelector('#partie2 #content ul');
+    console.log(ul);
+})
 
 function btnDisabled(){
     var userCity = document.querySelector('#partie2 input').value;
@@ -65,17 +92,7 @@ function checkCity(userCity){
     return citySelected;
 }
 
-function getCities(userCity){
-    var citiesSelected = [];
-    Object.entries(countries).forEach(country => {
-        countries[country[0]].forEach(city => {
-            citiesSelected.push(city);
-        });
-    });
-    return citiesSelected;
-}
-
-function getCountry(userCity){
+function getCountryObj(userCity){
     var countrySelected = null;
     Object.entries(countries).forEach(country => {
         countries[country[0]].forEach(city => {
@@ -84,46 +101,5 @@ function getCountry(userCity){
             }
         });
     });
-    return countrySelected[0];
+    return countrySelected;
 }
-
-
-
-
-// function searchInTab(event){
-//     event.preventDefault();
-//     var userVille = document.getElementById('villeP2').value;
-
-//     var franceFound = france.find(city => city == userVille);
-//     var espagneFound = espagne.find(city => city == userVille);
-
-//     if(franceFound != undefined){
-//         france.forEach(element => {
-//             var newLi = document.createElement('li');
-//             newLi.innerHTML = element;
-//             document.getElementById('listeVille').appendChild(newLi);
-//         });
-//         var newH3 = document.createElement('h3');
-//         newH3.innerHTML = 'Bienvenu en France';
-//         document.getElementById('formP2').append(newH3);
-
-//     }else if (espagneFound != undefined) {
-//         alert('Bienvenu en Espagne !');
-//     }
-// }
-
-// document.getElementById('villeP2').addEventListener('keyup', function(){
-//     var userVille = document.getElementById('villeP2').value;
-
-//     var cityFrance = france.find(city => city == userVille);
-//     var cityEspagne = espagne.find(city => city == userVille);
-
-//     if(cityFrance === undefined && cityEspagne === undefined){
-//         document.getElementById('submitVilleP2').disabled = true;
-//     } else {
-//         document.getElementById('submitVilleP2').disabled = false;
-//     }
-
-// })
-
-// document.getElementById('submitVilleP2').addEventListener("click", searchInTab);
