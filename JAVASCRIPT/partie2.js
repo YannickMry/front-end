@@ -50,12 +50,17 @@ document.querySelector('#partie2 button').addEventListener('click', function(eve
     newDiv.appendChild(newUl);
     document.querySelector('#partie2 form').append(newDiv);
 
-    // DEBUT AJOUT NOUVELLE DESTINATION
-    var ajoutDest = document.createElement('button');
-    ajoutDest.setAttribute('id', 'ajoutDest');
-    ajoutDest.textContent = 'Ajouter une destination';
-    document.querySelector('#btn').appendChild(ajoutDest);
-    document.querySelector('#choisirDest').remove();
+    // DEBUT ADD BTN AJOUT NOUVELLE DESTINATION    
+    if(document.querySelector('#btn #choisirDest')){
+        document.querySelector('#choisirDest').remove();
+    }
+
+    if(document.querySelector('#btn').children.length < 1){
+        var ajoutDest = document.createElement('button');
+        ajoutDest.setAttribute('id', 'ajoutDest');
+        ajoutDest.textContent = 'Ajouter une destination';
+        document.querySelector('#btn').appendChild(ajoutDest);
+    }
 });
 
 // Event qui disable le btn si la ville est pas bonne
@@ -64,12 +69,31 @@ document.querySelector('#partie2 input').addEventListener('keyup', function(){
 })
 
 // Event btn Ajouter destination
-document.querySelector('#ajoutDest').addEventListener("click", '#btn', function(event){
+document.addEventListener("click", function(event){
     event.preventDefault();
-
-    var ul = document.querySelector('#partie2 #content ul');
-    console.log(ul);
+    var element = event.target;
+    if(element.id === 'ajoutDest'){
+        addInList(document.querySelector('#partie2 ul'), document.querySelector('#partie2 input').value);
+    }
 })
+
+function addInList(element, value){
+    
+    if(checkCity(value)==null){
+        var res = prompt('Voulez vous ajouter cette ville à la liste ? y/n');
+        if(res === 'y'){
+            var newLi = document.createElement('li');
+            newLi.textContent = value;
+            element.appendChild(newLi);
+            alert("l'ajout a bien été effectué !");
+        } else {
+            alert("l'ajout n'a pas été effectué !");
+        }
+    }else {
+        alert("La ville existe déjà !");
+    }
+    
+}
 
 function btnDisabled(){
     var userCity = document.querySelector('#partie2 input').value;
