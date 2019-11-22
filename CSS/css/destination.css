@@ -1,6 +1,11 @@
 main{
     display: flex;
+    flex-direction: row;
     justify-content: center;
+}
+
+section #ajouter {
+    border: 1px solid red;
 }
 
 h1 a{

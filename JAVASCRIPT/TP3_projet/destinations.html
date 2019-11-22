@@ -40,93 +40,35 @@
     </header>
     <hr>
     <main>
+        <section id="ajouter">
+            <form action="">
+                <input type="text" id="destination" placeholder="Destination...">
+                <input type="text" id="image" placeholder="Image src...">
+                <input type="text" id="alt" placeholder="Nom de image...">
+                <input type="text" id="offre" placeholder="Offre...">
+                <input type="text" id="prix" placeholder="Prix...">
+                <input type="text" id="details" placeholder="Details...">
+                <button>Ajouter</button>
+            </form>
+        </section>
         <table>
             <thead>
                 <tr>
                     <th class="padding-10">Destination</th>
                     <th class="padding-10">Offre</th>
                     <th class="padding-10">Prix</th>
-                    <th class="padding-10"></th>
+                    <th class="padding-10">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="padding-30">
-                        <img src="img/madagascar.jpg" alt="image maison" width="300px">
-                    </td>
-                    <td class="padding-30">
-                        Circuit aquatique, Lorem ipsum dolor sit amet
-                    </td>
-                    <td class="padding-30">
-                        700€
-                    </td>
-                    <td class="padding-30">
-                        <details>
-                            <summary><button>découvrir</button></summary>
-                            Madagascar, Circuit aquatique, Lorem ipsum dolor sit amet, 700€
-                        </details>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">
-                        <img src="img/maison.jpeg" alt="image maison" width="300px">
-                    </td>
-                    <td class="padding-30">
-                        Circuit exploration sous marine, Lorem ipsum dolor sit amet
-                    </td>
-                    <td class="padding-30">
-                        900€
-                    </td>
-                    <td class="padding-30">
-                        <details>
-                            <summary><button>découvrir</button></summary>
-                            Caraïbe, Circuit exploration sous marine, Lorem ipsum dolor sit amet, 900€
-                        </details>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">
-                        <img src="img/montage.jpeg" alt="image maison" width="300px">
-                    </td>
-                    <td class="padding-30">
-                        Circuit montagne, Lorem ipsum dolor sit amet
-                    </td>
-                    <td class="padding-30">
-                        999€
-                    </td>
-                    <td class="padding-30">
-                        <details>
-                            <summary><button>découvrir</button></summary>
-                            Canada, Circuit montagne, Lorem ipsum dolor sit amet, 999€
-                        </details>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">
-                        <img src="img/ocean.jpeg" alt="image maison" width="300px">
-                    </td>
-                    <td class="padding-30">
-                        Circuit océan, Lorem ipsum dolor sit amet
-                    </td>
-                    <td class="padding-30">
-                        1050€
-                    </td>
-                    <td class="padding-30">
-                        <details>
-                            <summary><button>découvrir</button></summary>
-                            Espagne, Circuit océan, Lorem ipsum dolor sit amet, 1050
-                        </details>
-                    </td>
-                </tr>
+                <!-- Les lignes sont affichées en JS en fonction de ce 
+                        qu'il y a dans l'objet destination -->
             </tbody>
         </table>
     </main>
     <footer>
-
     </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="js/javascript.js"></script>
 </body>
 </html>
