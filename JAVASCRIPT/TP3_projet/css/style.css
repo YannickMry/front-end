@@ -1,0 +1,48 @@
+body {
+    background-color: #EEE;
+}
+
+header a {
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+section {
+    width: 60%;
+    padding: 10px 30px 10px 30px;
+    background-color: #FFF;
+}
+
+article p, blockquote{
+    text-align: justify;
+}
+
+h2 {
+    position: relative;
+}
+
+h2::before {
+    content: "";
+    background-color: #BD1343;
+    width: 5px;
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    left: -30px;
+}
+
+article img {
+    width: 100%;
+    height: 500px;
+    margin: 20px 0;
+}
+
+hr {
+    margin: 20px 0;
+}
