@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/destination.css">
+    <title>Agence de voyage !</title>
+</head>
+<body>
+    <header>
+        <nav id="menu">
+            <ul>
+                <li>
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+                <li>
+                    <a href="services.html">Services</a>
+                </li>
+                <li>
+                    <a href="destinations.html" id="current_menu">Destinations</a>
+                </li>
+                <li>
+                    <a href="audio.html">Voyage virtuel</a>
+                    <ul class="sous-menu">
+                        <li><a href="audio.html">Audio</a></li>
+                        <li><a href="video.html">Vidéo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <h1><a href="index.html">Mon agence de voyage de rêve !</a></h1>
+    </header>
+    <hr>
+    <main class="container-fluid">
+        <section id="ajouter" class="row">
+            <form action="" class="col-12 d-flex">
+                <input type="text" id="ajouter_destination" class="form-control" placeholder="Destination...">
+                <input type="text" id="ajouter_image" class="form-control mx-1" placeholder="Image src...">
+                <input type="text" id="ajouter_alt" class="form-control" placeholder="Nom de image...">
+                <input type="text" id="ajouter_offre" class="form-control mx-1" placeholder="Offre...">
+                <input type="text" id="ajouter_prix" class="form-control" placeholder="Prix...">
+                <input type="text" id="ajouter_details" class="form-control mx-1" placeholder="Details...">
+                <button class="btn btn-sm btn-primary">Ajouter</button>
+            </form>
+        </section>
+        <section id="chercher" class="row">
+            <form action="">
+                <input type="text" id="chercher-destination" class="form-control" placeholder="Chercher une destination...">
+            </form>
+        </section>
+
+        <section id="table" class="row w-75 my-3">
+
+            <div id="thead" class="row pt-3 pb-2 w-100 border-bottom border-secondary text-white">
+                <div class="col-3 font-weight-bold h5 text-center">Destination</div>
+                <div class="col-6 font-weight-bold h5 text-center">Offre</div>
+                <div class="col-1 font-weight-bold h5 text-center">Prix</div>
+                <div class="col-2 font-weight-bold h5 text-center">Actions</div>
+            </div>
+
+            <div id="tbody" class="w-100">
+                    <!-- Les lignes sont affichées en JS en fonction de ce 
+                            qu'il y a dans l'objet destination -->
+            </div>
+        </section>
+
+    </main>
+    <footer>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="js/javascript.js"></script>
+</body>
+</html>

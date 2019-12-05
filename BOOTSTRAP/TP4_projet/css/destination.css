@@ -1,0 +1,48 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 a{
+    color: black;
+}
+
+main #ajouter {
+    margin: 20px 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    color: #EEE;
+}
+  
+table, th, td {
+    border-bottom: 1px solid black;
+}
+
+#table #thead {
+    background-color: #34434F;
+}
+
+#tbody > .row:nth-child(odd){
+    background-color: rgb(142, 170, 192);
+}
+
+#tbody > .row:nth-child(even){
+    background-color: rgb(108, 129, 146);
+}
+
+#tbody > .row:hover {
+    opacity: 0.8;
+    color: black;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-30 {
+    padding: 10px 30px;
+}
