@@ -36,8 +36,6 @@ var destinations = [];
 destinations.push(madagascar, caraibe, canada, espagne);
 
 
-
-console.log(destinations);
 var template = '<td class="padding-30 destination">'+
     '<img src="" alt="" width="300px">'+
 '</td>'+
@@ -53,25 +51,27 @@ var template = '<td class="padding-30 destination">'+
 var count = 0;
 
 miseAJour(template);
+clearInput();
 
-$("#ajouter button").on('click', function(e){
+// Event listener sur le boutton ajouter
+$("#ajouter-modifier").on('click', '#btn-ajouter', function(e){
     e.preventDefault();
     addDestiation();
 });
 
-// Ajouter une destination
+// function Ajouter une destination
 function addDestiation(){
-    var nomDestination = $('#ajouter_destination').val();
-    var image = $('#ajouter_image').val();
-    var altImage = $('#ajouter_alt').val();
-    var offre = $('#ajouter_offre').val();
-    var prix = $('#ajouter_prix').val();
-    var details = $('#ajouter_details').val();
+    var nomDestination = $('#destination').val();
+    var image = $('#image').val();
+    var altImage = $('#alt').val();
+    var offre = $('#offre').val();
+    var prix = $('#prix').val();
+    var details = $('#details').val();
 
     var destination = {
         nom: nomDestination,
-        image: 'img/'+image,
-        alt: 'image'+altImage,
+        image: image,
+        alt: 'image '+altImage,
         offre: offre,
         prix: prix+'€',
         details: details,
@@ -80,6 +80,8 @@ function addDestiation(){
     destinations.push(destination);
 
     miseAJour(template);
+    clearInput();
+    alert('Nouvelle destination ajoutée !');
 }
 
 
@@ -92,23 +94,78 @@ function miseAJour(template){
             $('#line-'+count+' .destination img').attr('alt', elements.alt);
             $('#line-'+count+' .offre').text(elements.nom+', '+elements.offre);
             $('#line-'+count+' .prix').text(elements.prix);
-            $('#line-'+count+' .modifier').attr('data-ligne', count);
+            $('#line-'+count+' .modifier').attr('data-index', index);
             $('#line-'+count+' .supprimer').attr({'data-ligne': count, 'data-index': index});
             $('#line-'+count+' .description').attr('data-ligne', count);
     });
 }
 
-$('table').on('click','.supprimer', function(e){
+//Event listener sur les bouttons modifier de chaque ligne
+$('table').on('click', '.modifier', function(e){
     e.preventDefault();
-    deleteRow(e.target.dataset.ligne, e.target.dataset.index);
+    fillInput(e.target.dataset.index);
 })
 
-function deleteRow(idRow, idTable){
+// Function pour remplir les input 
+function fillInput(idTable){
+    $('#destination').val(destinations[idTable].nom);
+    $('#image').val(destinations[idTable].image);
+    $('#alt').val(destinations[idTable].alt);
+    $('#offre').val(destinations[idTable].offre);
+    $('#prix').val(destinations[idTable].prix);
+    $('#details').val(destinations[idTable].details);
+
+    if($('#ajouter-modifier #btn-ajouter').length != 0){
+        $('#btn-ajouter').text('Modifier');
+        $('#ajouter-modifier').off("click", "#btn-ajouter");
+        $('#btn-ajouter').attr({'id': 'btn-modifier', 'data-index': idTable});
+    } else {
+        $('#btn-modifier').attr('data-index', idTable);
+    }
+}
+
+// Ajouter un event listener sur le btn modifier afin de modifier un element du tableau
+$('#ajouter-modifier').on('click', '#btn-modifier', function(e){
+    e.preventDefault();
+    updateRow(e.target.dataset.index); 
+});
+
+//function pour modifier la ligne d'un tableau
+function updateRow(idTable){
+    var nomDestination = $('#destination').val();
+    var image = $('#image').val();
+    var altImage = $('#alt').val();
+    var offre = $('#offre').val();
+    var prix = $('#prix').val();
+    var details = $('#details').val();
+
+    destinations[idTable].nom = nomDestination;
+    destinations[idTable].image = image;
+    destinations[idTable].alt = altImage;
+    destinations[idTable].offre = offre;
+    destinations[idTable].prix = prix;
+    destinations[idTable].details = details;
+
+    miseAJour(template);
+    $('#btn-modifier').text('Ajouter');
+    $('#ajouter-modifier').off("click", "#btn-modifier");
+    $('#btn-modifier').attr('id', 'btn-ajouter');
+    clearInput();
+}
+
+// Event listener sur les bouttons supprimer
+$('table').on('click','.supprimer', function(e){
+    e.preventDefault();
+    deleteRow(e.target.dataset.index);
+})
+
+// Function pour supprimer un élément du tableau et du dom html
+function deleteRow(idTable){
     destinations.splice(idTable, 1);
-    $('tbody #line-'+idRow).remove();
     miseAJour(template);
 }
 
+// listener sur l'input de la recherche de destination avec function de recherche
 $("#chercher-destination").keyup(function(){
     var filter = $("#chercher-destination").val().toUpperCase();
     var arrayTr = $("table tbody").children('tr');
@@ -125,3 +182,11 @@ $("#chercher-destination").keyup(function(){
     });
     
 });
+
+// Clear input
+function clearInput(){
+    var input = $('#ajouter-modifier').children('form').children('input');
+    input.each(function(){
+        this.value = '';
+    })
+}
