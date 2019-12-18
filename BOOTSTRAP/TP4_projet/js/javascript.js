@@ -32,12 +32,11 @@ var espagne = {
     details: 'Espagne, Circuit océan, Lorem ipsum dolor sit amet, 1050',
 };
 
+console.log('Made with ♥');
+
 var destinations = [];
 destinations.push(madagascar, caraibe, canada, espagne);
 
-
-
-console.log(destinations);
 var template = '<div class="destination col-3 my-3">' +
     '<img src="" alt="" style="width: 300px;">' +
 '</div>'+
@@ -46,8 +45,8 @@ var template = '<div class="destination col-3 my-3">' +
 '<div class="actions col-2 d-flex flex-column justify-content-center align-items-center">' +
     '<div class="row mb-4">' +
         '<button class="description btn btn-info">D</button>' +
-        '<button class="modifier btn btn-warning mx-2">M</button>' +
-        '<button class="supprimer btn btn-danger">S</button>' +
+        '<button class="modifier btn btn-warning mx-2"><i class="far fa-edit"></i></button>' +
+        '<button class="supprimer btn btn-danger"><i class="fas fa-trash"></i></button>' +
     '</div>' +
     '<p>Description:<span class="details"></span></p>' +
 '</div>';
@@ -126,4 +125,53 @@ $("#chercher-destination").keyup(function(){
         }
     });
     
+});
+
+$('#btn-connexion').on('click', function(e){
+    e.preventDefault();
+    var connexion = {login: $('#login').val(), password: $('#password').val()};
+    
+    $.ajax({
+        method: "POST",
+        url: "http://localhost/sites/etu/BOOTSTRAP/TP4_projet/data/donnee.php",
+        data: connexion,
+        dataType: "html",
+    })
+    .done(function (xhr) {
+        if(xhr == 'Success admin'){
+            $('.modifier').attr('class', 'modifier btn btn-warning');
+            $('.supprimer').attr('class', 'supprimer btn btn-danger');
+        } else if(xhr == 'Success user'){
+            $('.modifier').attr('class', 'modifier d-none');
+            $('.supprimer').attr('class', 'supprimer d-none');
+        } else {
+            $('.modifier').attr('class', 'modifier d-none');
+            $('.supprimer').attr('class', 'supprimer d-none');
+        }
+    })
+    .fail(function () {
+        alert("une erreur est survenue");
+    });
+});
+
+$.ajax({
+    method: "POST",
+    url: "http://localhost/sites/etu/BOOTSTRAP/TP4_projet/data/donnee.php",
+    dataType: "html",
+})
+.done(function (xhr) {
+    if(xhr == 'Success admin'){
+        alert('Vous etes connecté !');
+        $('.modifier').attr('class', 'modifier btn btn-warning');
+        $('.supprimer').attr('class', 'supprimer btn btn-danger');
+    } else if(xhr == 'Success user'){
+        $('.modifier').attr('class', 'modifier d-none');
+        $('.supprimer').attr('class', 'supprimer d-none');
+    } else {
+        $('.modifier').attr('class', 'modifier d-none');
+        $('.supprimer').attr('class', 'supprimer d-none');
+    }
+})
+.fail(function () {
+    alert("une erreur est survenue");
 });
