@@ -32,35 +32,37 @@ var espagne = {
     details: 'Espagne, Circuit océan, Lorem ipsum dolor sit amet, 1050',
 };
 
+var template = '<div class="card">' +
+'<div class="destination card-header p-0">' +
+    '<img src="" alt="" class="w-100">' +
+'</div>' +
+'<div class="card-body">' +
+    '<p class="offre card-text"></p>' +
+    '<p class="prix h4 text-primary text-center">300 €</p>' +
+'</div>' +
+'<div class="actions card-footer d-flex justify-content-around">' +
+    '<button class="modifier d-none btn btn-warning mx-2"><i class="far fa-edit"></i></button>' +
+    '<button class="supprimer d-none btn btn-danger"><i class="fas fa-trash"></i></button>' +
+'</div>' +
+'</div>';
+var destinations = [];
+var count = 0;
+const PATH = "http://localhost/front-end/BOOTSTRAP/TP4_projet/data/donnee.php";
+
 console.log('Made with ♥');
 
-var destinations = [];
 destinations.push(madagascar, caraibe, canada, espagne);
-
-var template = '<div class="destination col-3 my-3">' +
-    '<img src="" alt="" style="width: 300px;">' +
-'</div>'+
-'<div class="offre col-6 text-break d-flex align-items-center"></div>' +
-'<div class="prix col-1 d-flex justify-content-center align-items-center"></div>' +
-'<div class="actions col-2 d-flex flex-column justify-content-center align-items-center">' +
-    '<div class="row mb-4">' +
-        '<button class="description btn btn-info">D</button>' +
-        '<button class="modifier btn btn-warning mx-2"><i class="far fa-edit"></i></button>' +
-        '<button class="supprimer btn btn-danger"><i class="fas fa-trash"></i></button>' +
-    '</div>' +
-    '<p>Description:<span class="details"></span></p>' +
-'</div>';
-
-var count = 0;
-
 miseAJour(template);
+check_auth(PATH, null);
+clearInput();
 
-$("#ajouter button").on('click', function(e){
+// Event listener sur le boutton ajouter
+$("#ajouter-modifier").on('click', '#btn-ajouter', function(e){
     e.preventDefault();
     addDestiation();
 });
 
-// Ajouter une destination
+// function Ajouter une destination
 function addDestiation(){
     var nomDestination = $('#ajouter_destination').val();
     var image = $('#ajouter_image').val();
@@ -81,38 +83,96 @@ function addDestiation(){
     destinations.push(destination);
 
     miseAJour(template);
+    clearInput();
+    alert('Nouvelle destination ajoutée !');
 }
 
 
 function miseAJour(template){
-    $('#tbody').children('.row').remove();
+    $('#conteneur').children('.carte').remove();
     $.each(destinations, function(index, elements){
-        $('#tbody').append('<div class="row w-100" id="line-'+ ++count +'" data-destination="'+elements.nom+'"></div>');
+        $('#conteneur').append('<div class="carte col-sm-12 col-md-6 col-lg-4 mb-4" id="line-'+ ++count +'" data-destination="'+elements.nom+'"></div>');
             $('#line-'+count).append(template);
             $('#line-'+count+' .destination img').attr('src', elements.image);
             $('#line-'+count+' .destination img').attr('alt', elements.alt);
             $('#line-'+count+' .offre').text(elements.nom+', '+elements.offre);
             $('#line-'+count+' .prix').text(elements.prix);
-            $('#line-'+count+' .modifier').attr('data-ligne', count);
+            $('#line-'+count+' .modifier').attr({'data-ligne': count, 'data-index': index});
             $('#line-'+count+' .supprimer').attr({'data-ligne': count, 'data-index': index});
-            $('#line-'+count+' .description').attr('data-ligne', count);
+            $('#line-'+count+' .description').attr({'data-ligne': count, 'data-index': index});
     });
+    check_auth(PATH, null);
 }
 
-$('#table').on('click','.supprimer', function(e){
+//Event listener sur les bouttons modifier de chaque ligne
+$('#conteneur').on('click', '.modifier', function(e){
+    e.preventDefault();
+    fillInput(e.target.parentNode.dataset.index);
+})
+
+// Function pour remplir les input 
+function fillInput(idTable){
+    $('#ajouter_destination').val(destinations[idTable].nom);
+    $('#ajouter_image').val(destinations[idTable].image);
+    $('#ajouter_alt').val(destinations[idTable].alt);
+    $('#ajouter_offre').val(destinations[idTable].offre);
+    $('#ajouter_prix').val(destinations[idTable].prix);
+    $('#ajouter_details').val(destinations[idTable].details);
+
+    if($('#ajouter-modifier #btn-ajouter').length != 0){
+        $('#btn-ajouter').text('Modifier');
+        $('#ajouter-modifier').off("click", "#btn-ajouter");
+        $('#btn-ajouter').attr({'id': 'btn-modifier', 'data-index': idTable});
+    } else {
+        $('#btn-modifier').attr('data-index', idTable);
+    }
+}
+
+// Ajouter un event listener sur le btn modifier afin de modifier un element du tableau
+$('#ajouter-modifier').on('click', '#btn-modifier', function(e){
+    e.preventDefault();
+    updateRow(e.target.dataset.index); 
+});
+
+//function pour modifier la ligne d'un tableau
+function updateRow(idTable){
+    var nomDestination = $('#ajouter_destination').val();
+    var image = $('#ajouter_image').val();
+    var altImage = $('#ajouter_alt').val();
+    var offre = $('#ajouter_offre').val();
+    var prix = $('#ajouter_prix').val();
+    var details = $('#ajouter_details').val();
+
+    destinations[idTable].nom = nomDestination;
+    destinations[idTable].image = image;
+    destinations[idTable].alt = altImage;
+    destinations[idTable].offre = offre;
+    destinations[idTable].prix = prix;
+    destinations[idTable].details = details;
+
+    miseAJour(template);
+    $('#btn-modifier').text('Ajouter');
+    $('#ajouter-modifier').off("click", "#btn-modifier");
+    $('#btn-modifier').attr('id', 'btn-ajouter');
+    clearInput();
+    alert('Destination modifiée avec succès !');
+}
+
+$('#conteneur').on('click','.supprimer', function(e){
     e.preventDefault();
     deleteRow(e.target.dataset.ligne, e.target.dataset.index);
 })
 
 function deleteRow(idRow, idTable){
     destinations.splice(idTable, 1);
-    $('#tbody #line-'+idRow).remove();
+    $('#conteneur #line-'+idRow).remove();
     miseAJour(template);
+    alert('Destination supprimée avec succès !');
 }
 
 $("#chercher-destination").keyup(function(){
     var filter = $("#chercher-destination").val().toUpperCase();
-    var arrayTr = $("#table #tbody").children('.row');
+    var arrayTr = $("#conteneur").children('.carte');
 
     var textValue;
 
@@ -130,48 +190,42 @@ $("#chercher-destination").keyup(function(){
 $('#btn-connexion').on('click', function(e){
     e.preventDefault();
     var connexion = {login: $('#login').val(), password: $('#password').val()};
-    
+    check_auth(PATH, connexion);
+});
+
+// Clear input
+function clearInput(){
+    var input = $('#ajouter-modifier').children('form').children('.form-group').children('input');
+    input.each(function(){
+        this.value = '';
+    })
+}
+
+function check_auth(url, form){
     $.ajax({
         method: "POST",
-        url: "http://localhost/sites/etu/BOOTSTRAP/TP4_projet/data/donnee.php",
-        data: connexion,
+        url: url,
+        data: form,
         dataType: "html",
     })
     .done(function (xhr) {
         if(xhr == 'Success admin'){
-            $('.modifier').attr('class', 'modifier btn btn-warning');
-            $('.supprimer').attr('class', 'supprimer btn btn-danger');
+            $('.modifier').removeClass('d-none');
+            $('.supprimer').removeClass('d-none');
+            $('#connexionModal').modal('hide');
+            alert('Vous etes connecté en tant qu\'admin !');
         } else if(xhr == 'Success user'){
-            $('.modifier').attr('class', 'modifier d-none');
-            $('.supprimer').attr('class', 'supprimer d-none');
+            $('.modifier').addClass('d-none');
+            $('.supprimer').addClass('d-none');
+            $('#connexionModal').modal('hide');
+            alert('Vous etes connecté en tant qu\'utilisateur !');
         } else {
-            $('.modifier').attr('class', 'modifier d-none');
-            $('.supprimer').attr('class', 'supprimer d-none');
+            $('#connexionModal').modal('hide');
+            $('.modifier').addClass('d-none');
+            $('.supprimer').addClass('d-none');
         }
     })
     .fail(function () {
-        alert("une erreur est survenue");
+        alert("une erreur est survenue, veuillez vérifier le chemin d'accès au fichier donnee.php");
     });
-});
-
-$.ajax({
-    method: "POST",
-    url: "http://localhost/sites/etu/BOOTSTRAP/TP4_projet/data/donnee.php",
-    dataType: "html",
-})
-.done(function (xhr) {
-    if(xhr == 'Success admin'){
-        alert('Vous etes connecté !');
-        $('.modifier').attr('class', 'modifier btn btn-warning');
-        $('.supprimer').attr('class', 'supprimer btn btn-danger');
-    } else if(xhr == 'Success user'){
-        $('.modifier').attr('class', 'modifier d-none');
-        $('.supprimer').attr('class', 'supprimer d-none');
-    } else {
-        $('.modifier').attr('class', 'modifier d-none');
-        $('.supprimer').attr('class', 'supprimer d-none');
-    }
-})
-.fail(function () {
-    alert("une erreur est survenue");
-});
+}

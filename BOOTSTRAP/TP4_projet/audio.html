@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/audio.css">
     
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <title>Agence de voyage !</title>
@@ -15,36 +15,41 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="menu.html">Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="destinations.html">Destinations</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Voyage virtuel
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="audio.html">Audio</a>
-                        <a class="dropdown-item" href="video.html">Vidéo</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Voyage virtuel
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="audio.html">Audio</a>
+                            <a class="dropdown-item" href="video.html">Vidéo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
 
-                <li class="nav-item ml-2">
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#connexionModal">Connexion</button>
-                </li>
-            </ul>
+                    <li class="nav-item ml-2">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#connexionModal">Connexion</button>
+                    </li>
+                </ul>
+            </div>
         </nav>
         </header>
     <!-- Modal -->
@@ -71,50 +76,54 @@
             </div>
         </div>
     </div>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th class="padding-10">Titre</th>
-                    <th class="padding-10">Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td class="padding-30">Plage</td>
-                    <td class="padding-30">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td class="padding-30">
+    <main class="container my-5 d-flex flex-column">
+        <h1 class="text-center mb-5">Voyage audio</h1>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plage</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
                         <audio src="sound/beach.mp3" controls autoplay></audio>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">Forêt</td>
-                    <td class="padding-30">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td class="padding-30">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Forêt</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
                         <audio src="sound/forest.mp3" controls></audio>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">Oiseaux</td>
-                    <td class="padding-30">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td class="padding-30">
-                        <audio src="sound/junglebird.mp3" controls></audio>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="padding-30">KeyChimes</td>
-                    <td class="padding-30">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td class="padding-30">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">KeyChimes</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
                         <audio src="sound/KeyChimes.mp3" controls></audio>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Oiseaux</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <audio src="sound/junglebird.mp3" controls></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
 
