@@ -47,7 +47,7 @@ var template = '<div class="card">' +
 '</div>';
 var destinations = [];
 var count = 0;
-const PATH = "http://localhost/front-end/BOOTSTRAP/TP4_projet/data/donnee.php";
+const PATH = "http://localhost/sites/etu/front-end/BOOTSTRAP/TP4_projet/data/donnee.php";
 
 console.log('Made with ♥');
 
